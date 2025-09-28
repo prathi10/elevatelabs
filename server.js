@@ -1,22 +1,16 @@
 const express = require("express");
 const app = express();
 const PORT = 3000;
-
-// Middleware to parse JSON
 app.use(express.json());
-
-// In-memory list of books
 let books = [
   { id: 1, title: "The Alchemist", author: "Paulo Coelho" },
   { id: 2, title: "1984", author: "George Orwell" }
 ];
 
-// GET all books
 app.get("/books", (req, res) => {
   res.json(books);
 });
 
-// POST a new book
 app.post("/books", (req, res) => {
   const { title, author } = req.body;
   if (!title || !author) {
@@ -31,7 +25,6 @@ app.post("/books", (req, res) => {
   res.status(201).json(newBook);
 });
 
-// PUT update book by ID
 app.put("/books/:id", (req, res) => {
   const bookId = parseInt(req.params.id);
   const { title, author } = req.body;
@@ -47,7 +40,6 @@ app.put("/books/:id", (req, res) => {
   res.json(book);
 });
 
-// DELETE a book by ID
 app.delete("/books/:id", (req, res) => {
   const bookId = parseInt(req.params.id);
   const index = books.findIndex(b => b.id === bookId);
@@ -60,7 +52,7 @@ app.delete("/books/:id", (req, res) => {
   res.json({ message: "Book deleted", book: deletedBook[0] });
 });
 
-// Start server
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
+

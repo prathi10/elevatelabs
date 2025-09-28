@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #4facfe, #00f2fe);
+            color: white;
+            text-align: center;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header {
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        .weather-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .weather-card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-sizing: border-box;
+        }
+
+        .weather-card h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .weather-card p {
+            font-size: 1em;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .weather-card {
+                width: 90%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Forecast</a></li>
+            <li><a href="#">Settings</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Weather App</h1>
+        <p>Stay updated with real-time weather data</p>
+    </header>
+
+    <section class="weather-container">
+        <div class="weather-card">
+            <h2>New York, USA</h2>
+            <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Sunny">
+            <p>Temperature: 25°C</p>
+            <p>Condition: Sunny</p>
+        </div>
+        <div class="weather-card">
+            <h2>London, UK</h2>
+            <img src="https://openweathermap.org/img/wn/03d@2x.png" alt="Cloudy">
+            <p>Temperature: 18°C</p>
+            <p>Condition: Cloudy</p>
+        </div>
+        <div class="weather-card">
+            <h2>Tokyo, Japan</h2>
+            <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Rainy">
+            <p>Temperature: 22°C</p>
+            <p>Condition: Rainy</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Weather App</p>
+    </footer>
+</body>
+</html>

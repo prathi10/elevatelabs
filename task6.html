@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 6 - Contact Form Validation</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f4f9fd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-card {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #007bff;
+    }
+    button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: crimson;
+      font-size: 14px;
+      margin-top: 3px;
+    }
+    .success {
+      text-align: center;
+      margin-top: 15px;
+      color: green;
+      font-size: 17px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name">
+      <div id="nameError" class="error"></div>
+
+      <label for="phone">Phone Number:</label>
+      <input type="text" id="phone" placeholder="Enter your number">
+      <div id="phoneError" class="error"></div>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" placeholder="Enter your email">
+      <div id="emailError" class="error"></div>
+
+      <label for="query">Your Query:</label>
+      <textarea id="query" rows="4" placeholder="Write your query"></textarea>
+      <div id="queryError" class="error"></div>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div id="successMessage" class="success"></div>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      // Reset errors
+      document.getElementById("nameError").textContent = "";
+      document.getElementById("phoneError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("queryError").textContent = "";
+      document.getElementById("successMessage").textContent = "";
+
+      let valid = true;
+
+      // Name validation
+      let name = document.getElementById("name").value.trim();
+      if (name.length < 3) {
+        document.getElementById("nameError").textContent = "Name must be at least 3 characters.";
+        valid = false;
+      }
+
+      // Phone validation
+      let phone = document.getElementById("phone").value.trim();
+      let phoneRegex = /^[0-9]{10}$/; // 10-digit number only
+      if (!phoneRegex.test(phone)) {
+        document.getElementById("phoneError").textContent = "Enter a valid 10-digit phone number.";
+        valid = false;
+      }
+
+      // Email validation
+      let email = document.getElementById("email").value.trim();
+      let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+      if (!emailRegex.test(email)) {
+        document.getElementById("emailError").textContent = "Enter a valid email address.";
+        valid = false;
+      }
+
+      // Query validation
+      let query = document.getElementById("query").value.trim();
+      if (query.length < 5) {
+        document.getElementById("queryError").textContent = "Query must be at least 5 characters.";
+        valid = false;
+      }
+
+      // Success
+      if (valid) {
+        document.getElementById("successMessage").textContent = "✅ Your query has been submitted successfully!";
+        document.getElementById("contactForm").reset();
+      }
+    });
+  </script>
+</body>
+</html>
